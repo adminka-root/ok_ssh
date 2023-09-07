@@ -6,7 +6,9 @@ GNU/Linux administrators often have to deal with a large number of servers. For 
 > **Warning 2**: I am using mate terminal. In my opinion, this is the perfect terminal. Therefore, the default script is configured to create profiles in it. Who knows the Python language, theoretically should not experience difficulties in adapting the script for other terminals (pull requests are welcome. I will test and add if the code is working). If you don't know Python and/or are strongly against mate terminal, please leave.
 
 ```bash
-usage: ok_ssh [-h] [-d] [-s] [-r] [-a] [-y FILE] [-b STR] [-c] [-n] [-t] [--ssh_config_dest STR] [--auto_authorization_method STR]
+usage: ok_ssh [-h] [-d] [-s] [-r] [-a] [-y FILE] [-b STR] [-c] 
+              [-n] [-t] [--ssh_config_dest STR] 
+              [--auto_authorization_method STR]
 
 Script for integrating ssh connections in GNU/Linux OS
 
@@ -70,7 +72,7 @@ Desired NOT added = celery, docker_portal, nexus, pnu3, pnuDB, pnu_new, pnu_node
 All profiles      = default, profile0
 I don't want to add/edit = ansible, profile0
 
-To restore the original state see - cat '/home/adminka/.local/share/ok_ssh/dconf_restore_08_09_23_(03:37:33).txt'
+To restore the original state see - cat '~/.local/share/ok_ssh/source/dconf_restore_08_09_23_(03:37:33).txt'
 
 *** DCONF STATE AFTER EDITING: ***
 Desired added     = celery, docker_portal, nexus, pnu3, pnuDB, pnu_new, pnu_node2, pnu_node3, portainer, portal, portal_node2, portal_node3, template_system, togudb
@@ -122,7 +124,7 @@ Desired NOT added = ['']
 All profiles      = celery, default, docker_portal, nexus, pnu3, pnuDB, pnu_new, pnu_node2, pnu_node3, portainer, portal, portal_node2, portal_node3, profile0, template_system, togudb
 I don't want to add/edit = ansible, profile0
 
-To restore the original state see - cat '/home/adminka/General/Programming/Ssh/dconf_restore.txt'
+To restore the original state see - cat '~/.local/share/ok_ssh/source/dconf_restore.txt'
 
 *** DCONF STATE AFTER EDITING: ***
 Desired added     = ['']
