@@ -1,0 +1,54 @@
+---
+
+# Data on the basis of which the "dict_of_servers" dictionary is formed ------------------------------------------------
+keys:
+  ecdsa:
+      public_key: ~/.ssh/id_ecdsa.pub
+      private_key: ~/.ssh/id_ecdsa
+
+authorization:
+  user_1:
+    username: 'root'
+    password: 'tykwsadzfjsy'
+  user_2:
+    username: 'superman'
+    password: 'sfdjfkdlytjahz'
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Inventory ------------------------------------------------------------------------------------------------------------
+dict_of_servers:
+    DB:  # 'NAME' for dconf profile and 'ssh NAME' - command
+      # If "yes" is specified, pretends that this key does not exist in the dictionary
+      i_want_add: true    # required field: bool
+      ip: '10.12.12.1'  # required field: str
+      port: 22            # optional field: int/str
+      keys: "{{ keys.ecdsa }}" # required field: dict(public_key: path, private_key: path)
+      authorization: "{{ authorization.user_1 }}"  # required field: dict(username: str, password: str)
+    ansible:
+      i_want_add: false
+      ip: '10.12.12.2'
+      keys: "{{ keys.ecdsa }}"
+      authorization: "{{ authorization.user_2 }}"
+# ----------------------------------------------------------------------------------------------------------------------
+
+
+# Default value. Has a lower priority than the corresponding option at startup -----------------------------------------
+base_profile: 'profile0'  # dconf profile, on the basis of which other profiles will be created
+ssh_config_dest: '~/.ssh/config'
+# ----------------------------------------------------------------------------------------------------------------------
+
+
+# Properties to be copied from the base terminal profile (dconf) -------------------------------------------------------
+opts_key_from_base_profile: "{{ Mate_base }}"
+Mate_base: [
+    'allow-bold', 'background-color', 'background-image', 'background-darkness', 'background-type',
+    'backspace-binding', 'bold-color', 'bold-color-same-as-fg', 'copy-selection',
+    'cursor-blink-mode', 'cursor-shape', 'default-show-menubar',
+    'default-size-columns', 'default-size-rows', 'delete-binding', 'exit-action',
+    'font', 'foreground-color', 'login-shell',  'palette',  'scroll-background',
+    'scroll-on-keystroke',  'scroll-on-output',  'scrollback-lines',  'scrollback-unlimited',
+    'scrollbar-position',  'silent-bell', 'title-mode', 'use-custom-command',
+    'use-custom-default-size',  'use-skey',  'use-system-font',  'use-theme-colors',
+    'use-urls',  'word-chars'
+]
+# ----------------------------------------------------------------------------------------------------------------------

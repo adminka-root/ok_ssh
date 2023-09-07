@@ -1,0 +1,6 @@
+certifi
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+PyYAML==6.0.1
+pyyml==0.0.2
+sshconf==0.2.5
