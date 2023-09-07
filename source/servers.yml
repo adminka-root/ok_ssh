@@ -18,7 +18,7 @@ authorization:
 # Inventory ------------------------------------------------------------------------------------------------------------
 dict_of_servers:
     DB:  # 'NAME' for dconf profile and 'ssh NAME' - command
-      # If "yes" is specified, pretends that this key does not exist in the dictionary
+      # If "false" is specified, pretends that this key does not exist in the dictionary
       i_want_add: true    # required field: bool
       ip: '10.12.12.1'  # required field: str
       port: 22            # optional field: int/str

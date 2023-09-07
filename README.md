@@ -72,7 +72,7 @@ Desired NOT added = celery, docker_portal, nexus, pnu3, pnuDB, pnu_new, pnu_node
 All profiles      = default, profile0
 I don't want to add/edit = ansible, profile0
 
-To restore the original state see - cat '~/.local/share/ok_ssh/source/dconf_restore_08_09_23_(03:37:33).txt'
+To restore the original state see - cat "~/.local/share/ok_ssh/source/dconf_restore_08_09_23_(03:37:33).txt"
 
 *** DCONF STATE AFTER EDITING: ***
 Desired added     = celery, docker_portal, nexus, pnu3, pnuDB, pnu_new, pnu_node2, pnu_node3, portainer, portal, portal_node2, portal_node3, template_system, togudb
@@ -124,7 +124,7 @@ Desired NOT added = ['']
 All profiles      = celery, default, docker_portal, nexus, pnu3, pnuDB, pnu_new, pnu_node2, pnu_node3, portainer, portal, portal_node2, portal_node3, profile0, template_system, togudb
 I don't want to add/edit = ansible, profile0
 
-To restore the original state see - cat '~/.local/share/ok_ssh/source/dconf_restore.txt'
+To restore the original state see - cat "~/.local/share/ok_ssh/source/dconf_restore.txt"
 
 *** DCONF STATE AFTER EDITING: ***
 Desired added     = ['']
