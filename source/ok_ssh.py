@@ -613,8 +613,8 @@ class ConfigureDconfTerminal:
             if returned_value:
                 if returned_value[0] + returned_value[-1] in ("''", '""'):
                     returned_value = returned_value[1:-1]
-                if returned_value[0] != '[' and not returned_value.isdigit() \
-                        and not returned_value.lower() in ('true', 'false'):
+                if not returned_value or (returned_value[0] != '[' and not returned_value.isdigit() \
+                        and not returned_value.lower() in ('true', 'false')):
                     returned_value = "'" + returned_value + "'"
             values_of_base_profile[basename] = returned_value
         return values_of_base_profile
@@ -763,6 +763,7 @@ class ConfigureSSH:
             self.ssh_config.set(
                 host, Hostname=si['IP'], Port=si['Port'],
                 User=si['User'], IdentityFile=si['IdentityFile'],
+                IdentitiesOnly='yes',
             )
         self.ssh_config.save()
 
@@ -773,6 +774,7 @@ class ConfigureSSH:
             self.ssh_config.add(
                 host, Hostname=si['IP'], Port=si['Port'],
                 User=si['User'], IdentityFile=si['IdentityFile'],
+                IdentitiesOnly='yes',
             )
         self.ssh_config.save()
 
@@ -846,7 +848,9 @@ class ConfigureSSH:
         return StaticMethods.run_popen(command_list=[
             'sshpass', '-p', si['Password'],
             'ssh-copy-id', '-o', 'StrictHostKeyChecking no',
-            '-i', si['AuthorizationFile'],
+            '-o', 'IdentitiesOnly yes',
+            '-i', si['AuthorizationFile'], '-f',
+            '-p', str(si['Port']),
             si['User'] + '@' + si['IP'],
         ], timeout=self.send_key_timeout)
 
@@ -855,7 +859,9 @@ class ConfigureSSH:
         return StaticMethods.run_popen(command_list=[
             self.expect, si['Password'],
             'ssh-copy-id', '-o', 'StrictHostKeyChecking no',
+            '-o', 'IdentitiesOnly yes',
             '-i', si['AuthorizationFile'], '-f',
+            '-p', str(si['Port']),
             si['User'] + '@' + si['IP'],
         ], timeout=self.send_key_timeout)
 
